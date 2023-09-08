@@ -40,14 +40,13 @@
           onclick="resetMessage()" [(ngModel)]="tag.updateAt" />
         </div> 
        </div>  -->
-      <br>
+       <br>
       <div *ngIf="tag.id!=0">
       <label for="enableTrue">Enable</label >
         <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="tag.enable">
         <label style="margin-left: 4%;" for="enableFalse">Disable</label>
         <input  style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false" [(ngModel)]="tag.enable">
       </div>
-        <br>
       <button type="submit" class="btn btn-dark">Salva</button>
       </div>
 </form>
