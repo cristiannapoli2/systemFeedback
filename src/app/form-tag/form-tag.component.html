@@ -29,11 +29,11 @@
     </textarea>
     <br>
       <div class="form-row">
-        <div class="col">
+       <!--  <div class="col">
           <label for="createdAt" class="form-label">Creato in data</label>
           <input type="date" class="form-control" name="createdAt" id="createdAt"
           onclick="resetMessage()" [(ngModel)]="tag.createdAt" />
-        </div>
+        </div>  -->
         <div *ngIf="tag.id!=0" class="col">
           <label for="createdAt" class="form-label">Aggiornato in data</label>
           <input type="date" class="form-control" name="updateAt" id="updateAt"

@@ -40,16 +40,16 @@
       <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">
       </textarea>
       <br>
-      <label for="sendDate" class="form-label">Data invio</label>
+      <!-- <label for="sendDate" class="form-label">Data invio</label>
       <input style="width:auto" type="date" class="form-control" name="sendDate" id="sendDate"
-      onclick="resetMessage()" [(ngModel)]="feedback.sendDate"/>
+      onclick="resetMessage()" [(ngModel)]="feedback.sendDate"/> -->
       <br>
     <div class="form-row">
-      <div class="col">
+      <!-- <div class="col">
           <label for="createdAt" class="form-label">Creato in data</label>
           <input style="width:auto" type="date" class="form-control" name="createdAt" id="createdAt"
           onclick="resetMessage()" [(ngModel)]="feedback.createdAt" />
-          </div>
+          </div> -->
           <div *ngIf="feedback.id!=0" class="col">
             <label for="updateAt" class="form-label">Aggiornato in data</label>
             <input style="width:auto" type="date" class="form-control" name="updateAt" id="updateAt"
