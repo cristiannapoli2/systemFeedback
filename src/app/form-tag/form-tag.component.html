@@ -28,18 +28,18 @@
     <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="tag.description">
     </textarea>
     <br>
-      <div class="form-row">
-       <!--  <div class="col">
+      <!-- <div class="form-row">
+         <div class="col">
           <label for="createdAt" class="form-label">Creato in data</label>
           <input type="date" class="form-control" name="createdAt" id="createdAt"
           onclick="resetMessage()" [(ngModel)]="tag.createdAt" />
         </div>  -->
-        <div *ngIf="tag.id!=0" class="col">
+        <!-- <div *ngIf="tag.id!=0" class="col">
           <label for="createdAt" class="form-label">Aggiornato in data</label>
           <input type="date" class="form-control" name="updateAt" id="updateAt"
           onclick="resetMessage()" [(ngModel)]="tag.updateAt" />
-        </div>
-      </div>
+        </div> 
+       </div>  -->
       <br>
       <div *ngIf="tag.id!=0">
       <label for="enableTrue">Enable</label >
