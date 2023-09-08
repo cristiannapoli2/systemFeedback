@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="">Home </a>
+      <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+    </div>
+  </div>
+</nav>
+<form #form="ngForm" (ngSubmit)="onSubmit()">
+  <div class="container-fluid" class="inputWidth">
+    <h3>Invia Feedback</h3>
+    <br>
+        <label for="feedbackType" class="form-label">Tipo di Feedback</label>
+        <br>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="feedbackType" id="feedbackPositivo" value="Positivo" onclick="resetMessage()" [(ngModel)]="feedback.feedbackType" >
+          <label class="form-check-label" for="feedbackPositivo">
+            Positivo
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="feedbackType" id="feedbackMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbackType" >
+          <label class="form-check-label" for="feedbackMiglioramento">
+            Miglioramento
+          </label>
+        </div>
+        <!-- <label for="feedbackPositivo" class="form-label">Positivo</label>
+        <input type="radio" class="form-control" name="feedbackType" id="feedbackPositivo" value="Positivo" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/>
+        <label for="feedbacksMiglioramento" class="form-label">Miglioramento</label>
+        <input type="radio" class="form-control" name="feedbackType" id="feedbacksMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/> -->
+      <label for="description" class="form-label">Descrizione</label>
+      <br>
+      <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">
+      </textarea>
+      <br>
+      <!-- <label for="sendDate" class="form-label">Data invio</label>
+      <input style="width:auto" type="date" class="form-control" name="sendDate" id="sendDate"
+      onclick="resetMessage()" [(ngModel)]="feedback.sendDate"/> -->
+      <br>
+    <!-- <div class="form-row">
+       <div class="col">
+          <label for="createdAt" class="form-label">Creato in data</label>
+          <input style="width:auto" type="date" class="form-control" name="createdAt" id="createdAt"
+          onclick="resetMessage()" [(ngModel)]="feedback.createdAt" />
+          </div> -->
+          <!-- <div *ngIf="feedback.id!=0" class="col">
+            <label for="updateAt" class="form-label">Aggiornato in data</label>
+            <input style="width:auto" type="date" class="form-control" name="updateAt" id="updateAt"
+            onclick="resetMessage()" [(ngModel)]="feedback.updateAt" /> 
+          </div> 
+        </div>  -->
+        <br>
+        <div *ngIf="feedback.id!=0">
+        <label for="enableTrue">Enable</label >
+          <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="feedback.enable">
+          <label style="margin-left: 4%;" for="enableFalse">Disable</label>
+          <input  style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false" [(ngModel)]="feedback.enable">
+        </div>
+          <br>
+        <button type="submit" class="btn btn-dark">Salva</button>
+        </div>
+  </form>
