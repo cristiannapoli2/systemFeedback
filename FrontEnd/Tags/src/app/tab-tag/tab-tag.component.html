@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="">Home </a>
+      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link active" href="tabellaTag">Tabella Tag <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
+      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+    </div>
+  </div>
+</nav>
+<div *ngIf="tags.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
+<button routerLink="/formTag/:id" class="btn btn-dark">Inserisci Tag</button>
+<h3>Nessun tag inserito</h3>
+</div>
+
+<div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5" *ngIf="tags.length > 0">
+    <section class="container pb-5">
+      <h3 class="text-center my-4">Tabella tag</h3>
+      <div class="d-flex justify-content-center my-3">
+        <table border="1" class="table table-striped">
+          <thead class="bg-warning">
+            <th class="text-dark">Id</th>
+            <th class="text-dark">Nome tag</th>
+            <th class="text-dark">Descizione</th>
+            <th class="text-dark">Creato in data</th>
+            <th class="text-dark">Modificato in data</th>
+            <th class="text-dark">Stato</th>
+            <th class="text-dark"></th>
+  
+          </thead>
+          <tbody class="bg-dark">
+            <tr *ngFor="let tag of tags">
+              <td class="text-warning">{{tag.id}}</td>
+              <td class="text-warning">{{tag.tagName}}</td>
+              <td class="text-warning">{{tag.description}}</td>
+              <td class="text-warning">{{tag.createdAt}}</td>
+              <td class="text-warning">{{tag.updateAt}}</td>
+              <td class="text-warning">{{tag.enable}}</td>
+              <td><button routerLink='/formTag/{{tag.id}}' class="btn btn-outline-warning">Modifica</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <div class="d-flex justify-content-center my-3">
+      <a class="btn btn-outline-warning px-3 bg-dark" (click)="getTagImp(0)">First page</a>
+      <a class="btn btn-outline-warning px-3 bg-dark" (click)="getTagImp(page-1)">Previous</a>
+      <a class="btn btn-outline-dark px-3 bg-warning">Pagina {{page+1}}</a>
+      <a class="btn btn-outline-warning px-3 bg-dark" (click)="getTagImp(page+1)">Next</a>
+      <a class="btn btn-outline-warning px-3 bg-dark" (click)="getTagImp(nPagine)">Last page</a>
+    </div>
+  
+  </div>
