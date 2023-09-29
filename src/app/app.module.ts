@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-
-
-
-import { FormTagComponent } from './form-tag/form-tag.component';
-import { HttpClientModule } from '@angular/common/http';
-import { TabTagComponent } from './tab-tag/tab-tag.component';
-import { FormFeedbackComponent } from './form-feedback/form-feedback.component';
-import { TabFeedbackComponent } from './tab-feedback/tab-feedback.component';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { FormTagComponent } from "./form-tag/form-tag.component";
+import { HttpClientModule } from "@angular/common/http";
+import { TabTagComponent } from "./tab-tag/tab-tag.component";
+import { FormFeedbackComponent } from "./form-feedback/form-feedback.component";
+import { TabFeedbackComponent } from "./tab-feedback/tab-feedback.component";
+import { FormUserComponent } from "./form-user/form-user.component";
+import { TabUserComponent } from "./tab-user/tab-user.component";
 
 @NgModule({
   declarations: [
@@ -18,15 +17,12 @@ import { TabFeedbackComponent } from './tab-feedback/tab-feedback.component';
     FormTagComponent,
     TabTagComponent,
     FormFeedbackComponent,
-   TabFeedbackComponent
+    TabFeedbackComponent,
+    FormUserComponent,
+    TabUserComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

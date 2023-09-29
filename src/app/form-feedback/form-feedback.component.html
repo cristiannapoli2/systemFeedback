@@ -1,14 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">System Feedback Fiven</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="">Home </a>
-      <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-    </div>
+      <div class="navbar-nav">
+          <a class="nav-item nav-link" href="">Home</a>
+          <a class="nav-item nav-link" href="formUser/:id">Form User</a>
+          <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+          <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback<span
+            class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="tabellaUser">Tabella User </a>
+          <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
+          <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+          
+      </div>
   </div>
 </nav>
 <form #form="ngForm" (ngSubmit)="onSubmit()">
@@ -33,7 +40,8 @@
         <input type="radio" class="form-control" name="feedbackType" id="feedbackPositivo" value="Positivo" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/>
         <label for="feedbacksMiglioramento" class="form-label">Miglioramento</label>
         <input type="radio" class="form-control" name="feedbackType" id="feedbacksMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/> -->
-      <label for="description" class="form-label">Descrizione</label>
+     
+        <label for="description" class="form-label">Motiva la tua valutazione</label>
       <br>
       <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">
       </textarea>

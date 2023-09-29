@@ -22,7 +22,7 @@ export class TabFeedbackComponent implements OnInit{
     this.getFeedImp(this.page);
   }
 
-  getTag(): void {
+  getFeedbacks(): void {
     this.crud.getFeedbacks(this.page).subscribe((feedbacks: Feedback[]) => {
       this.feedbacks = feedbacks;
     });
