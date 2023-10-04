@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
       this.token = token;
       this.auth.token = token;
       this.auth.isUserLoggedIn();
-      alert("Username: "+this.token.username+"\n"+"Role: "+this.token.role);
+      alert("Username: "+this.token.username+"\n"+"Role: "+this.token.role+"\n"+"Date: "+this.token.expDate);
       // alert(this.token.role);
       this.router.navigate([""]);
     });
