@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link " href="#">Home </a>
-      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
-      <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="formTag/:id">Inserisci Tag</a>
+      <a class="nav-item nav-link active" href="formFeed/:id">Invia Feedback <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
@@ -16,14 +16,19 @@
   </div>
   <div class="navbar-nav ml-auto">
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a> <!-- Tipo submit rimosso -->
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn</a>
   </div>
 </nav>
+
+
+
 <form #form="ngForm" (ngSubmit)="onSubmit()">
   <div class="container-fluid" class="inputWidth">
     <h3>Invia Feedback</h3>
     <br>
+
+        <!-- Tipo Feedback -->
         <label for="feedbackType" class="form-label">Tipo di Feedback</label>
         <br>
         <div class="form-check">
@@ -31,7 +36,6 @@
           <label class="form-check-label" for="feedbackPositivo">
             Positivo
           </label>
-          
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="feedbackType" id="feedbackMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbackType" >
@@ -39,12 +43,9 @@
             Miglioramento
           </label>
         </div>
-        <!-- <label for="feedbackPositivo" class="form-label">Positivo</label>
-        <input type="radio" class="form-control" name="feedbackType" id="feedbackPositivo" value="Positivo" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/>
-        <label for="feedbacksMiglioramento" class="form-label">Miglioramento</label>
-        <input type="radio" class="form-control" name="feedbackType" id="feedbacksMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/> -->
         
         
+        <!-- Tag -->
         <div>
           <label for="tagName" class="form-label pt-3">Tag</label>
           <select name="tagName" id="tagName" class="form-select" [(ngModel)]="feedback.tagName" >
@@ -55,16 +56,56 @@
           </select>
         </div>
         
+        <br>
+        <!-- Descrizione -->
         <label for="description" class="form-label">Motiva la tua valutazione</label>
-      <br>
-      <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">
-      </textarea>
-      <br>
-      <!-- <label for="sendDate" class="form-label">Data invio</label>
-      <input style="width:auto" type="date" class="form-control" name="sendDate" id="sendDate"
-      onclick="resetMessage()" [(ngModel)]="feedback.sendDate"/> -->
-      <br>
-    <!-- <div class="form-row">
+        <br>
+        <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">
+        </textarea>
+        <br>
+        
+        <br>
+        <!-- Gruppo di lavoro -->
+        <label for="teamGroup" class="form-label">Gruppo di lavoro</label>
+        <input type="text" class="form-control" name="teamGroup" id="teamGroup" onclick="resetMessage()" [(ngModel)]="feedback.teamGroup" />
+        <br><br>
+
+         <!-- Inviato A -->
+         <div>
+          <label for="sentAt" class="form-label">Scegli destinatario: </label>
+          <select name="sentAt" id="sentAt" class="form-select" [(ngModel)]="feedback.sentAt" >
+            
+            <option *ngFor="let u of user" [value]="u.username" checked>
+              {{ u.username }}
+            </option>
+          </select>
+        </div>
+
+        <!-- <label for="sentAt" class="form-label">Scegli destinatario: </label>
+        <input type="text" class="form-control" name="sentAt" id="sentAt" onclick="resetMessage()" [(ngModel)]="feedback.sentAt" /> -->
+        <br><br>
+
+         <!-- Inviato Da -->
+         <input type="hidden" class="form-control" name="sentBy" id="sentBy" [value]="token.username" onclick="resetMessage()" [(ngModel)]="feedback.sentBy" />
+         <br><br>
+
+
+        <!-- Enable / Disable -->
+        <!-- <div *ngIf="feedback.id!=0">
+        <label for="enableTrue">Enable</label >
+          <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="feedback.enable">
+          <label style="margin-left: 4%;" for="enableFalse">Disable</label>
+          <input  style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false" [(ngModel)]="feedback.enable">
+        </div>
+           -->
+          <br>
+
+        <button type="submit" class="btn btn-dark">Salva</button>
+        </div>
+     
+  </form>
+
+  <!-- <div class="form-row">
        <div class="col">
           <label for="createdAt" class="form-label">Creato in data</label>
           <input style="width:auto" type="date" class="form-control" name="createdAt" id="createdAt"
@@ -76,14 +117,3 @@
             onclick="resetMessage()" [(ngModel)]="feedback.updateAt" /> 
           </div> 
         </div>  -->
-        <br>
-        <div *ngIf="feedback.id!=0">
-        <label for="enableTrue">Enable</label >
-          <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="feedback.enable">
-          <label style="margin-left: 4%;" for="enableFalse">Disable</label>
-          <input  style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false" [(ngModel)]="feedback.enable">
-        </div>
-          <br>
-        <button type="submit" class="btn btn-dark">Salva</button>
-        </div>
-  </form>

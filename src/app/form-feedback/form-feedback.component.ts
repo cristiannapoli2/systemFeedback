@@ -3,7 +3,10 @@ import { Feedback } from '../model/feedback';
 import { FeedbackService } from '../servizi/feedback.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tag } from '../model/tag';
-import { HttpClient } from '@angular/common/http';
+import { TokenJWT } from '../model/TokenJWT';
+import { User } from '../model/user';
+
+
 
 @Component({
   selector: 'app-form-feedback',
@@ -17,10 +20,13 @@ export class FormFeedbackComponent implements OnInit{
   feeds:Feedback[]=[];
   idfeedback!: number;
   tags!:Tag[];
+  token :TokenJWT=new TokenJWT();
+  user!:User[];
+ 
 
   
 
-  constructor(private crud: FeedbackService,private activatedRoute: ActivatedRoute, private router: Router, private http: HttpClient){}
+  constructor(private crud: FeedbackService,private activatedRoute: ActivatedRoute, private router: Router){}
   
   insertFeedback(feedback: Feedback): void {
     this.crud.addFeedback(feedback).subscribe((message: string) => {
@@ -58,6 +64,11 @@ export class FormFeedbackComponent implements OnInit{
 
   }
   ngOnInit(): void {
+
+    this.crud.getUsers().subscribe((user: User[]) => {
+      this.user = user;
+    });
+
     this.crud.getTags().subscribe((tags: Tag[]) => {
       this.tags = tags;
     });

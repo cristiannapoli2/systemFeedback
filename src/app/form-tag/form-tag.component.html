@@ -6,9 +6,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link active" href="formTag/:id">Form Tag <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
+      <a class="nav-item nav-link " href="#">Home </a>
+      <a class="nav-item nav-link" href="formTag/:id">Inserisci Tag</a>
+      <a class="nav-item nav-link active" href="formFeed/:id">Invia Feedback <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
@@ -16,10 +16,14 @@
   </div>
   <div class="navbar-nav ml-auto">
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a> <!-- Tipo submit rimosso -->
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn</a>
   </div>
 </nav>
+
+<!--- -->
+
+
 <form #form="ngForm" (ngSubmit)="onSubmit()">
   <div class="container-fluid" class="inputWidth">
     <h3>Registrazione Tag</h3>
@@ -50,12 +54,16 @@
         </div> 
        </div>  -->
       <br>
+
+      <!-- Enable / Disable -->
       <div *ngIf="tag.id!=0">
       <label for="enableTrue">Enable</label >
         <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="tag.enable">
         <label style="margin-left: 4%;" for="enableFalse">Disable</label>
         <input  style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false" [(ngModel)]="tag.enable">
       </div>
+
+
         <br>
       <button type="submit" class="btn btn-dark">Salva</button>
       </div>

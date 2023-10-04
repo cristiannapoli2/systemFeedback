@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
-      <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
+      <a class="nav-item nav-link " href="formTag/:id">Inserisci Tag </a>
+      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
       <a class="nav-item nav-link active" href="tabellaFeed">Tabella Feedback <span class="sr-only">(current)</span></a>
@@ -20,6 +20,10 @@
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
   </div>
 </nav>
+
+
+
+
 <div *ngIf="feedbacks.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
   <button routerLink="/formFeed/:id" class="btn btn-primary">Inserisci Feedback</button>
   <h3>Nessun feedback inserito</h3>

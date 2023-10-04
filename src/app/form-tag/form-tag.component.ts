@@ -19,7 +19,6 @@ export class FormTagComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getTagFeed
     this.idTag = this.activatedRoute.snapshot.params ['id'];
     this.crud.getTag(this.idTag).subscribe((tags:Tag) =>{
       this.tag = tags;
@@ -60,10 +59,5 @@ export class FormTagComponent implements OnInit{
       this.tag = new Tag();
     }
   
-  }
-  getTagFeed(): void {
-    this.crud.getTagsFeed().subscribe((tags: Tag[]) => {
-      this.tags = tags;
-    });
   }
 }

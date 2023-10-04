@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
-      <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
+      <a class="nav-item nav-link " href="formTag/:id">Inserisci Tag </a>
+      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link active" href="tabellaTag">Tabella Tag  <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
@@ -20,6 +20,10 @@
     <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
   </div>
 </nav>
+
+
+
+
 <div *ngIf="tags.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
   <button routerLink="/formTag/:id" class="btn btn-dark">Inserisci Tag</button>
   <h3>Nessun tag inserito</h3>
@@ -36,13 +40,13 @@
       <table class="table">
         <thead>
           <tr class="bg-primary">
-            <th class="text-white">Id</th>
-            <th class="text-white">Tag</th>
-            <th class="text-white">Descizione</th>
+            <th >Id</th>
+            <th >Tag</th>
+            <th >Descizione</th>
             <!-- <th class="text-white">Creato in data</th>
             <th class="text-white">Modificato in data</th> -->
             <!-- <th class="text-white">Stato</th> -->
-            <th class="text-white"></th>
+            <th ></th>
           </tr>
         </thead>
         <tbody>
@@ -54,6 +58,7 @@
             <td>{{t.updateAt}}</td> -->
             <!-- <td>{{t.enable}}</td> -->
             <td><button routerLink='/formTag/{{t.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
+            
           </tr>
         </tbody>
       </table>
