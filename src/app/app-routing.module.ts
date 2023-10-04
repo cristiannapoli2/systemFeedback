@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { TabFeedbackComponent } from './tab-feedback/tab-feedback.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import { TabUserComponent } from './tab-user/tab-user.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: "formTag/:id", component: FormTagComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: "", component: HomeComponent},
   { path: "tabellaFeed", component: TabFeedbackComponent},
   { path: "formUser/:id", component: FormUserComponent },
-  {path: "tabellaUser", component: TabUserComponent}
+  {path: "tabellaUser", component: TabUserComponent},
+  {path: "login", component: LoginComponent}
 ];
 
 @NgModule({ 

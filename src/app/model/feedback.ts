@@ -1,5 +1,6 @@
 export class Feedback{
     id: number;
+    tagName:string;
     feedbackType: string;
     sendDate: Date;
     createdAt: Date;
@@ -9,6 +10,7 @@ export class Feedback{
     
     constructor(){
         this.id = 0;
+        this.tagName='';
         this.feedbackType = '';
         this.sendDate = new Date;
         this.createdAt = new Date;

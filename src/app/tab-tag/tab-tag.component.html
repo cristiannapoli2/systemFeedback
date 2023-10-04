@@ -6,15 +6,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="">Home</a>
-      <a class="nav-item nav-link" href="formUser/:id">Form User</a>
-      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link" href="#">Home</a>
+      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
       <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
-      <a class="nav-item nav-link active" href="tabellaTag">Tabella Tag<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" href="tabellaTag">Tabella Tag  <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-
     </div>
+  </div>
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
   </div>
 </nav>
 <div *ngIf="tags.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
@@ -29,12 +32,12 @@
       <a class="btn btn-primary" routerLink="/formTag/:id">Inserisci Tag</a>
     </div>
 
-    <div class="d-flex justify-content-center my-3">
-      <table class="table table-striped">
+    <div class="table-responsive-xs-sm-md-lg-xl-xxl">
+      <table class="table">
         <thead>
           <tr class="bg-primary">
             <th class="text-white">Id</th>
-            <th class="text-white">Nome tag</th>
+            <th class="text-white">Tag</th>
             <th class="text-white">Descizione</th>
             <!-- <th class="text-white">Creato in data</th>
             <th class="text-white">Modificato in data</th> -->
@@ -50,7 +53,7 @@
             <!-- <td>{{t.createdAt}}</td>
             <td>{{t.updateAt}}</td> -->
             <!-- <td>{{t.enable}}</td> -->
-            <td><button routerLink='/formTag/{{t.id}}' class="btn btn-warning">Modifica</button></td>
+            <td><button routerLink='/formTag/{{t.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
           </tr>
         </tbody>
       </table>

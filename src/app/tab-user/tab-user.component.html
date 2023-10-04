@@ -6,15 +6,18 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="">Home</a>
-      <a class="nav-item nav-link" href="formUser/:id">Form User</a>
-      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link" href="#">Home</a>
+      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
       <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
       <a class="nav-item nav-link active" href="tabellaUser">Tabella User <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-      
     </div>
+  </div>
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
   </div>
 </nav>
 <div *ngIf="users.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
@@ -27,43 +30,42 @@
       <h3>Tabella User</h3>
       <a class="btn btn-primary" routerLink="/formUser/:id">Inserisci user</a>
     </div>
-    <div class="d-flex justify-content-center my-3">
-      <table class="table table-striped">
-        <thead>
-          <tr class="bg-primary">
-            <th class="text-white">Id</th>
-            <th class="text-white">Username</th>
-            <th class="text-white">Password</th>
-            <th class="text-white">Email</th>
-            <th class="text-white">Name</th>
-            <th class="text-white">Surname</th>
-            <th class="text-white">Birthdate</th>
-            <th class="text-white">Birthplace</th>
-            <th class="text-white">Fiscal Code</th>
-            <th class="text-white">Role</th>
-            <th class="text-white"></th>
-            <th class="text-white"></th>
+    <div class="table-responsive">
+      <table class="table table table-striped">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birthdate</th>
+            <th>Birthplace</th>
+            <th>Fiscal Code</th>
+            <th>Role</th>
+            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let u of users">
-            <td>{{u.id}}</td>
-            <td>{{u.username}}</td>
-            <td>{{u.password}}</td>
-            <td>{{u.email}}</td>
-            <td>{{u.name}}</td>
-            <td>{{u.surname}}</td>
-            <td>{{u.birthDate}}</td>
-            <td>{{u.birthPlace}}</td>
-            <td>{{u.cf}}</td>
-            <td>{{u.roleName}}</td>
+            <td>{{ u.id }}</td>
+            <td>{{ u.username }}</td>
+            <td>{{ u.password }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.surname }}</td>
+            <td>{{ u.birthDate }}</td>
+            <td>{{ u.birthPlace }}</td>
+            <td>{{ u.cf }}</td>
+            <td>{{ u.roleName }}</td>
             <td>
-              <button class="btn btn-warning" routerLink="/formUser/{{u.id}}">
+              <button class="btn btn-warning btn-sm" routerLink="/formUser/{{ u.id }}">
                 Modifica
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" (click)="deleteUser(u)">
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(u)">
                 Cancella
               </button>
             </td>

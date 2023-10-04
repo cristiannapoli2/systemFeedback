@@ -8,6 +8,7 @@ import { Tag } from '../model/tag';
 })
 export class TagService {
   uri: string = 'http://localhost:8094'
+  uri1: string = 'http://localhost:8095'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -37,6 +38,9 @@ export class TagService {
     return this.http.get<Tag>(`${this.uri}/getTag/${id}`)
   }
 
+  getTagsFeed():Observable<Tag[]>{
+    return this.http.get<Tag[]>(`${this.uri}/getTags`)
+  }
 
   
 }

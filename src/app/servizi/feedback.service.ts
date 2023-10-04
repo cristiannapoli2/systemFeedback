@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Feedback } from '../model/feedback';
+import { Tag } from '../model/tag';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
   uri: string = 'http://localhost:8095'
+  uri1: string = 'http://localhost:8094'
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,5 +40,8 @@ export class FeedbackService {
     return this.http.get<Feedback>(`${this.uri}/getFeedback/${id}`)
   }
 
+  getTags():Observable<Tag[]>{
+    return this.http.get<Tag[]>(`${this.uri1}/getTags`)
+  }
+
 }
-  

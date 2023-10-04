@@ -1,21 +1,23 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">System Feedback Fiven</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-          <a class="nav-item nav-link" href="">Home</a>
-          <a class="nav-item nav-link" href="formUser/:id">Form User</a>
-          <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
-          <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback<span
-            class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="tabellaUser">Tabella User </a>
-          <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-          <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-          
-      </div>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link " href="#">Home </a>
+      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link active" href="formFeed/:id">Form Feedback <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
+      <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
+      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+    </div>
+  </div>
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a> <!-- Tipo submit rimosso -->
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn</a>
   </div>
 </nav>
 <form #form="ngForm" (ngSubmit)="onSubmit()">
@@ -29,6 +31,7 @@
           <label class="form-check-label" for="feedbackPositivo">
             Positivo
           </label>
+          
         </div>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="feedbackType" id="feedbackMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbackType" >
@@ -40,7 +43,17 @@
         <input type="radio" class="form-control" name="feedbackType" id="feedbackPositivo" value="Positivo" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/>
         <label for="feedbacksMiglioramento" class="form-label">Miglioramento</label>
         <input type="radio" class="form-control" name="feedbackType" id="feedbacksMiglioramento" value="Miglioramento" onclick="resetMessage()" [(ngModel)]="feedback.feedbacksType"/> -->
-     
+        
+        
+        <div>
+          <label for="tagName" class="form-label pt-3">Tag</label>
+          <select name="tagName" id="tagName" class="form-select" [(ngModel)]="feedback.tagName" >
+            <option *ngFor="let t of tags" [value]="t.tagName" checked>
+              {{ t.tagName }}
+            </option>
+          </select>
+        </div>
+        
         <label for="description" class="form-label">Motiva la tua valutazione</label>
       <br>
       <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="feedback.description">

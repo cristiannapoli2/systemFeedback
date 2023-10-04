@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule} from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormTagComponent } from "./form-tag/form-tag.component";
@@ -10,6 +10,7 @@ import { FormFeedbackComponent } from "./form-feedback/form-feedback.component";
 import { TabFeedbackComponent } from "./tab-feedback/tab-feedback.component";
 import { FormUserComponent } from "./form-user/form-user.component";
 import { TabUserComponent } from "./tab-user/tab-user.component";
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { TabUserComponent } from "./tab-user/tab-user.component";
     FormFeedbackComponent,
     TabFeedbackComponent,
     FormUserComponent,
-    TabUserComponent
+    TabUserComponent,
+    LoginComponent,
+    
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

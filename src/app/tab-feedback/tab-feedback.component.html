@@ -6,53 +6,56 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="">Home</a>
-      <a class="nav-item nav-link" href="formUser/:id">Form User</a>
-      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link" href="#">Home</a>
+      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
       <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-      <a class="nav-item nav-link active" href="tabellaFeed">Tabella Feedback<span class="sr-only">(current)</span></a>
-     
+      <a class="nav-item nav-link active" href="tabellaFeed">Tabella Feedback <span class="sr-only">(current)</span></a>
     </div>
+  </div>
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
   </div>
 </nav>
 <div *ngIf="feedbacks.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
-  <button routerLink="/formFeed/:id" class="btn btn-dark">Inserisci Tag</button>
+  <button routerLink="/formFeed/:id" class="btn btn-primary">Inserisci Feedback</button>
   <h3>Nessun feedback inserito</h3>
 </div>
 
 <div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5" *ngIf="feedbacks.length > 0">
   <section class="container pb-5">
     <div class="d-flex justify-content-between">
-      <h3 class="text-center my-4">Tabella feedback</h3>
+      <h3>Tabella feedback</h3>
       <a class="btn btn-primary" routerLink="/formFeed/:id">Inserisci feedback</a>
     </div>
-    <h3 class="text-center my-4">Tabella feedback</h3>
-    <div class="d-flex justify-content-center my-3">
-      <table class="table table-striped">
+    
+    <div class="table-responsive-xs-sm-md-lg-xl-xxl">
+      <table class="table">
         <thead>
           <tr class="bg-primary">
-            <th class="text-dark">Id</th>
-            <th class="text-dark">Tipo feedback</th>
-            <!-- <th class="text-dark">Data di invio</th> -->
-            <th class="text-dark">Creato in data</th>
-            <th class="text-dark">Modificato in data</th>
-            <th class="text-dark">Stato</th>
-            <th class="text-dark">Descrizione</th>
-            <th class="text-dark"></th>
+            <th class="text-white">Id</th>
+            <th class="text-white">Tipo feedback</th>
+            <th class="text-white">Tag</th>
+            <!-- <th class="text-white">Creato in data</th>
+            <th class="text-white">Modificato in data</th>
+            <th class="text-white">Stato</th> -->
+            <th class="text-white">Descrizione</th>
+            <th class="text-white"></th>
           </tr>
         </thead>
-        <tbody class="bg-dark">
+        <tbody>
           <tr *ngFor="let feedback of feedbacks">
-            <td class="text-warning">{{feedback.id}}</td>
-            <td class="text-warning">{{feedback.feedbackType}}</td>
-            <!-- <td class="text-warning">{{feedback.sendDate}}</td> -->
-            <td class="text-warning">{{feedback.createdAt}}</td>
+            <td >{{feedback.id}}</td>
+            <td >{{feedback.feedbackType}}</td>
+            <td >{{feedback.tagName}}</td>
+            <!-- <td class="text-warning">{{feedback.createdAt}}</td>
             <td class="text-warning">{{feedback.updateAt}}</td>
-            <td class="text-warning">{{feedback.enable}}</td>
-            <td class="text-warning">{{feedback.description}}</td>
-            <td><button routerLink='/formFeed/{{feedback.id}}' class="btn btn-outline-warning">Modifica</button></td>
+            <td class="text-warning">{{feedback.enable}}</td> -->
+            <td >{{feedback.description}}</td>
+            <td><button routerLink='/formFeed/{{feedback.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
           </tr>
         </tbody>
       </table>
@@ -60,11 +63,12 @@
   </section>
 
   <div class="d-flex justify-content-center my-3">
-    <a class="btn btn-outline-warning px-3 bg-dark" (click)="getFeedImp(0)">First page</a>
-    <a class="btn btn-outline-warning px-3 bg-dark" (click)="getFeedImp(page-1)">Previous</a>
-    <a class="btn btn-outline-dark px-3 bg-warning">Pagina {{page+1}}</a>
-    <a class="btn btn-outline-warning px-3 bg-dark" (click)="getFeedImp(page+1)">Next</a>
-    <a class="btn btn-outline-warning px-3 bg-dark" (click)="getFeedImp(nPagine)">Last page</a>
+    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(0)">First page</a>
+    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(page-1)">Previous</a>
+    <a class="btn btn-outline-primary px-3 bg-primary active">Pagina {{page+1}} <span
+      class="sr-only">(current)</span></a>
+    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(page+1)">Next</a>
+    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(nPagine)">Last page</a>
   </div>
      
         

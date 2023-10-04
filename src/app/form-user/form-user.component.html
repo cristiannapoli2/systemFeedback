@@ -6,15 +6,19 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="">Home</a>
-      <a class="nav-item nav-link active" href="formUser/:id">Form User<span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="formTag/:id">Form Tag</a>
+      <a class="nav-item nav-link" href="#">Home</a>
+      <a class="nav-item nav-link " href="formTag/:id">Form Tag </a>
       <a class="nav-item nav-link" href="formFeed/:id">Form Feedback</a>
       <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
       <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
       <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-
     </div>
+  </div>
+  <div class="navbar-nav ml-auto">
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a> <!-- Tipo submit rimosso -->
+    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn <span
+        class="sr-only">(current)</span></a>
   </div>
 </nav>
 <form #form="ngForm" (ngSubmit)="onSubmit()">
@@ -33,9 +37,16 @@
             <input type="text" class="form-control" name="username" id="username" placeholder="Username: "
               onclick="resetMessage()" [(ngModel)]="user.username">
           </div>
-          <div class="col"> <label for="password" class="form-label pt-3">Password</label>
+
+          <div class="col" *ngIf="user.id!=0"> <label for="password" class="form-label pt-3">Password</label>
+            <input type="text" class="form-control" name="password" id="password" placeholder="Password: "
+              onclick="resetMessage()" [(ngModel)]="user.password" disabled>
+
+          </div>
+          <div class="col" *ngIf="user.id==0"> <label for="password" class="form-label pt-3">Password</label>
             <input type="text" class="form-control" name="password" id="password" placeholder="Password: "
               onclick="resetMessage()" [(ngModel)]="user.password">
+
           </div>
         </div>
       </div>
@@ -90,9 +101,9 @@
     <br>
 
     <div *ngIf="user.id!=0">
-      
+
       <div style="margin-left: 13.8%;">
-       
+
         <label for="enableTrue">Enable</label>
         <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true"
           [(ngModel)]="user.enable">
