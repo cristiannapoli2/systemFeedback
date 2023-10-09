@@ -1,89 +1,75 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">System Feedback Fiven</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/">Home</a>
-      <a class="nav-item nav-link" href="formTag/:id">Inserisci Tag</a>
-      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
-      <a class="nav-item nav-link active" href="tabellaUser">Tabella User <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+<div *ngIf="users.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <button routerLink="/formUser/:id" class="btn btn-primary">Inserisci User</button>
+    </div>
+    <div class="col-12 col-md-6 mt-3 mt-md-0">
+      <h3>Nessun user inserito</h3>
     </div>
   </div>
-  <div class="navbar-nav ml-auto">
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn</a>
-  </div>
-</nav>
-
-
-
-<div *ngIf="users.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
-  <button routerLink="/formUser/:id" class="btn btn-dark">Inserisci User</button>
-  <h3>Nessun user inserito</h3>
 </div>
+
 <div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5" *ngIf="users.length > 0">
   <section class="container pb-5">
     <div class="d-flex justify-content-between">
       <h3>Tabella User</h3>
-      <a class="btn btn-primary" routerLink="/formUser/:id">Inserisci user</a>
+      <a class="btn btn-primary" routerLink="/formUser/:id">Inserisci User</a>
     </div>
-    <div class="table-responsive">
-      <table class="table table table-striped">
-        <thead class="bg-primary text-white">
-          <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Birthdate</th>
-            <th>Birthplace</th>
-            <th>Fiscal Code</th>
-            <th>Role</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let u of users">
-            <td>{{ u.id }}</td>
-            <td>{{ u.username }}</td>
-            <td>{{ u.email }}</td>
-            <td>{{ u.name }}</td>
-            <td>{{ u.surname }}</td>
-            <td>{{ u.birthDate }}</td>
-            <td>{{ u.birthPlace }}</td>
-            <td>{{ u.cf }}</td>
-            <td>{{ u.roleName }}</td>
-            <td>
-              <button class="btn btn-warning btn-sm" routerLink="/formUser/{{ u.id }}">
-                Modifica
-              </button>
-            </td>
-            <td>
-              <button class="btn btn-danger btn-sm" (click)="deleteUser(u)">
-                Cancella
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <br>
+    <div class="d-flex justify-content-center my-3">
+      <div class="table-responsive">
+        <table class="table table-striped table-rounded">
+          
+            <tr class="bg-primary">
+              <th class="text-white">#</th>
+              <th class="text-white">Username</th>
+              <th class="text-white">Email</th>
+              <th class="text-white">Name</th>
+              <th class="text-white">Surname</th>
+              <th class="text-white">Birthdate</th>
+              <th class="text-white">Birthplace</th>
+              <th class="text-white">Fiscal Code</th>
+              <th class="text-white">Role</th>
+              <th colspan="2"></th>
+            </tr>
+         
+          <tbody class="bg-primary">
+            <tr *ngFor="let u of users">
+              <td>{{ u.id }}</td>
+              <td>{{ u.username }}</td>
+              <td>{{ u.email }}</td>
+              <td>{{ u.name }}</td>
+              <td>{{ u.surname }}</td>
+              <td>{{ u.birthDate }}</td>
+              <td>{{ u.birthPlace }}</td>
+              <td>{{ u.cf }}</td>
+              <td>{{ u.roleName }}</td>
+              <td>
+                <button class="btn btn-warning btn-sm" routerLink="/formUser/{{ u.id }}">
+                  Modifica
+                </button>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="deleteUser(u)">
+                  Cancella
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
+
+
   <div class="d-flex justify-content-center my-3">
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getUserImp(0)">First page</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getUserImp(page-1)">Previous</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getUserImp(0)">First page</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getUserImp(page-1)">Previous</a>
     <a class="btn btn-outline-primary px-3 bg-primary active">Pagina {{page+1}} <span
         class="sr-only">(current)</span></a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getUserImp(page+1)">Next</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getUserImp(nPagine)">Last page</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getUserImp(page+1)">Next</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getUserImp(nPagine)">Last page</a>
   </div>
 
 </div>

@@ -1,35 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">System Feedback Fiven</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link " href="formTag/:id">Inserisci Tag </a>
-      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
-      <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
-      <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-      <a class="nav-item nav-link active" href="tabellaFeed">Tabella Feedback <span class="sr-only">(current)</span></a>
-    </div>
-  </div>
-  <div class="navbar-nav ml-auto">
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login <span class="sr-only">(current)</span> </a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
-  </div>
-</nav>
-
-
-
 <form #form="ngForm" (ngSubmit)="onSubmit()">
     <div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
-      <div class="login">
-        <h2>Login</h2>
+      <div>
+        <h2 style="text-align: center;">Login</h2>
       </div>
   
-      <div class="col-4 centroDue">
+      <div class="col-6 centroDue">
         <label for="username" class="form-label pt-3">Username</label>
         <input type="text" class="form-control" name="username" id="username" [(ngModel)]="user.username"
           (click)="resetMessage()" placeholder="Inserisci l'username">
@@ -39,9 +14,9 @@
         (click)="resetMessage()" placeholder="Inserisci la password">
       </div>
       <br>
-      <div>
-        <button type="submit" class="btn btn-dark" style="margin-right: 2%;">Accedi</button>
-        <button class="btn btn-square btn-dark" routerLink="/formUser/:id">Registrati</button>
+      <div class="centroTre">
+        <button type="submit" class="btn btn-square btn-primary" style="margin-right: 2%;">Accedi</button>
+        <button class="btn btn-square btn-primary" routerLink="/formUser/:id">Registrati</button>
       </div>
   
     </div>

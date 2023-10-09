@@ -4,6 +4,7 @@ import { User } from "../model/user";
 import { UserCrudService } from "../servizi/user-crud.service";
 import { Role } from "../model/role";
 import { TokenJWT } from "../model/TokenJWT";
+import { loginService } from "../servizi/login-service";
 
 @Component({
   selector: "app-form-user",
@@ -17,14 +18,19 @@ export class FormUserComponent implements OnInit {
   idUser!: number;
   role!: Role;
   roles: Role[] = [];
+  currentAccount!: string;
+  token!: TokenJWT;
   
 
   constructor(
     private crudUser: UserCrudService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth:loginService
   ) {}
   ngOnInit(): void {
+    this.currentAccount = this.auth.currentAccount;
+    this.token = this.auth.token;
     this.idUser = this.activatedRoute.snapshot.params["id"];
     this.crudUser.getUser(this.idUser).subscribe((user: User) => {
       this.user = user;
@@ -34,11 +40,11 @@ export class FormUserComponent implements OnInit {
       this.roles = roles;
     });
   }
-  insertUser(user: User): void {
-    this.crudUser.addUser(user).subscribe((message: string) => {
-      this.message = message;
-    });
-  }
+  // insertUser(user: User): void {
+  //   this.crudUser.addUser(user).subscribe((message: string) => {
+  //     this.message = message;
+  //   });
+  // }
 
   getUser(id: number): any {
     this.crudUser.getUser(id).subscribe((user: User) => {

@@ -1,79 +1,114 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">System Feedback Fiven</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link " href="formTag/:id">Inserisci Tag </a>
-      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
-      <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
-      <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-      <a class="nav-item nav-link active" href="tabellaFeed">Tabella Feedback <span class="sr-only">(current)</span></a>
+<!-- <div *ngIf="feedbacks.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <button routerLink="/formFeed/:id" class="btn btn-primary">Inserisci Feedback</button>
+    </div>
+    <div class="col-12 col-md-6 mt-3 mt-md-0">
+      <h3>Nessun feedback inserito</h3>
     </div>
   </div>
-  <div class="navbar-nav ml-auto">
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
-  </div>
-</nav>
+</div> -->
 
-
-
-
-<div *ngIf="feedbacks.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
-  <button routerLink="/formFeed/:id" class="btn btn-primary">Inserisci Feedback</button>
-  <h3>Nessun feedback inserito</h3>
-</div>
-
-<div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5" *ngIf="feedbacks.length > 0">
-  <section class="container pb-5">
-    <div class="d-flex justify-content-between">
-      <h3>Tabella feedback</h3>
-      <a class="btn btn-primary" routerLink="/formFeed/:id">Inserisci feedback</a>
+<div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
+  <div class="row">
+    <div class="d-flex justify-content-between" >
+        <a class="btn btn-primary" routerLink="/formFeed/:id">Invia Feedback</a>
     </div>
     
-    <div class="table-responsive-xs-sm-md-lg-xl-xxl">
-      <table class="table">
-        <thead>
-          <tr class="bg-primary">
-            <th class="text-white">Id</th>
-            <th class="text-white">Tipo feedback</th>
-            <th class="text-white">Tag</th>
-            <!-- <th class="text-white">Creato in data</th>
-            <th class="text-white">Modificato in data</th>
-            <th class="text-white">Stato</th> -->
-            <th class="text-white">Descrizione</th>
-            <th class="text-white"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let feedback of feedbacks">
-            <td >{{feedback.id}}</td>
-            <td >{{feedback.feedbackType}}</td>
-            <td >{{feedback.tagName}}</td>
-            <!-- <td class="text-warning">{{feedback.createdAt}}</td>
-            <td class="text-warning">{{feedback.updateAt}}</td>
-            <td class="text-warning">{{feedback.enable}}</td> -->
-            <td >{{feedback.description}}</td>
-            <td><button routerLink='/formFeed/{{feedback.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Feedback Inviati -->
+    <div class="col-12 col-md-6">
+      <br><hr>
+      <section class="container pb-5">
+        <div class="d-flex justify-content-between">
+          <h3>Feedback Inviati <i class="fa fa-paper-plane-o" style="font-size:24px"></i></h3>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <!-- Intestazione tabella -->
+              <tr class="bg-primary">
+                <th class="text-white">#</th>
+                <th class="text-white">Inviato il</th>
+                <th class="text-white">Gruppo di lavoro</th>
+                <th class="text-white">Esito valutazione</th>
+                <th class="text-white">Inviato a</th>
+                <th></th>
+              </tr>
+              <!-- Dati tabella -->
+              <tbody *ngFor="let f of feedbacks">
+                <tr *ngIf="f.sentBy==token.username">
+                  <td>{{f.id}}</td>
+                  <td>{{f.sendDate}}</td>
+                  <td>{{f.teamGroup}}</td>
+                  <td>
+                    <ng-container *ngIf="f.feedbackType=='Positivo'">
+                      <i class="fa fa-thumbs-o-up" style="font-size:24px"></i>{{f.feedbackType}}
+                    </ng-container>
+                    <ng-container *ngIf="f.feedbackType=='Miglioramento'">
+                      <i class="fa fa-cog fa-spin"> </i>{{f.feedbackType}}
+                    </ng-container>
+                  </td>
+                  <td>{{f.sentAt}}</td>
+                  <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bs-primary)" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                      <path class="eye-open" d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                      <path class="eye-closed" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                    </svg>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
-
-  <div class="d-flex justify-content-center my-3">
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(0)">First page</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(page-1)">Previous</a>
-    <a class="btn btn-outline-primary px-3 bg-primary active">Pagina {{page+1}} <span
-      class="sr-only">(current)</span></a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(page+1)">Next</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getFeedImp(nPagine)">Last page</a>
+    
+    <!-- Feedback Ricevuti -->
+    <div class="col-12 col-md-6">
+      <br><hr>
+      <section class="container pb-5">
+        <div class="d-flex justify-content-between">
+          <h3>Feedback Ricevuti <i class="fa fa-paper-plane-o" style="font-size:24px;transform: rotate(180deg);"></i></h3>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+          <div class="table-responsive">
+            <!-- Tabelle Feedback Ricevuti -->
+            <table class="table table-striped">
+              <tr class="bg-primary">
+                <th class="text-white">#</th>
+                <th class="text-white">Inviato il</th>
+                <th class="text-white">Gruppo di lavoro</th>
+                <th class="text-white">Esito valutazione</th>
+                <th class="text-white">Inviato a</th>
+                <th></th>
+              </tr>
+              <!-- Dati tabella -->
+              <tbody *ngFor="let f of feedbacks">
+                <tr *ngIf="f.sentAt==token.username">
+                  <td>{{f.id}}</td>
+                  <td>{{f.sendDate}}</td>
+                  <td>{{f.teamGroup}}</td>
+                  <td>
+                    <ng-container *ngIf="f.feedbackType=='Positivo'">
+                      <i class="fa fa-thumbs-o-up" style="font-size:24px"></i>{{f.feedbackType}}
+                    </ng-container>
+                    <ng-container *ngIf="f.feedbackType=='Miglioramento'">
+                      <i class="fa fa-cog fa-spin"> </i>{{f.feedbackType}}
+                    </ng-container>
+                  </td>
+                  <td>{{f.sentAt}}</td>
+                  <td>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="var(--bs-primary)" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                      <path class="eye-open" d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                      <path class="eye-closed" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                    </svg>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
-     
-        
 </div>

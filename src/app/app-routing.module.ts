@@ -8,16 +8,17 @@ import { TabFeedbackComponent } from './tab-feedback/tab-feedback.component';
 import { FormUserComponent } from './form-user/form-user.component';
 import { TabUserComponent } from './tab-user/tab-user.component';
 import { LoginComponent } from './login/login.component';
+import { RouteGuardService } from './servizi/route-guard.service';
 
 const routes: Routes = [
-  { path: "formTag/:id", component: FormTagComponent },
-  { path: "tabellaTag", component: TabTagComponent },
-  { path: "formFeed/:id", component: FormFeedbackComponent },
-  { path: "", component: HomeComponent},
-  { path: "tabellaFeed", component: TabFeedbackComponent},
-  { path: "formUser/:id", component: FormUserComponent },
-  {path: "tabellaUser", component: TabUserComponent},
-  {path: "login", component: LoginComponent}
+  { path: "formTag/:id", component: FormTagComponent,canActivate:[RouteGuardService]},
+  { path: "tabellaTag", component: TabTagComponent,canActivate:[RouteGuardService]},
+  { path: "formFeed/:id", component: FormFeedbackComponent,canActivate:[RouteGuardService]},
+  { path: "home", component: HomeComponent,canActivate:[RouteGuardService]},
+  { path: "tabellaFeed", component: TabFeedbackComponent,canActivate:[RouteGuardService]},
+  { path: "formUser/:id", component: FormUserComponent,canActivate:[RouteGuardService]},
+  { path: "tabellaUser", component: TabUserComponent,canActivate:[RouteGuardService]},
+  { path: "", component: LoginComponent}
 ];
 
 @NgModule({ 

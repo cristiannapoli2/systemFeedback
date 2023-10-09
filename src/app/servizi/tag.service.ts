@@ -19,7 +19,7 @@ export class TagService {
   constructor(private http:HttpClient) { }
   
   addTag(tag: Tag): Observable<string> {
-    alert("Add Tag ok!")
+   
     return this.http.post<string>(`${this.uri}/upsertTag`, tag); 
   }
   
@@ -38,9 +38,6 @@ export class TagService {
     return this.http.get<Tag>(`${this.uri}/getTag/${id}`)
   }
 
-  getTagsFeed():Observable<Tag[]>{
-    return this.http.get<Tag[]>(`${this.uri}/getTags`)
-  }
-
+ 
   
 }

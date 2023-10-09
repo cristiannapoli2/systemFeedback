@@ -1,77 +1,56 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">System Feedback Fiven</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Home</a>
-      <a class="nav-item nav-link " href="formTag/:id">Inserisci Tag </a>
-      <a class="nav-item nav-link" href="formFeed/:id">Invia Feedback</a>
-      <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
-      <a class="nav-item nav-link active" href="tabellaTag">Tabella Tag  <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
+<div *ngIf="tags.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
+  <div class="row">
+    <div class="col-md-6">
+      <button routerLink="/formTag/:id" class="btn btn-primary">Inserisci Tag</button>
+    </div>
+    <div class="col-md-6">
+      <h3>Nessun tag inserito</h3>
     </div>
   </div>
-  <div class="navbar-nav ml-auto">
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn </a>
-  </div>
-</nav>
-
-
-
-
-<div *ngIf="tags.length == 0" class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
-  <button routerLink="/formTag/:id" class="btn btn-dark">Inserisci Tag</button>
-  <h3>Nessun tag inserito</h3>
 </div>
 
 <div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5" *ngIf="tags.length > 0">
   <section class="container pb-5">
-    <div class="d-flex justify-content-between">
-      <h3>Tabella tag</h3>
-      <a class="btn btn-primary" routerLink="/formTag/:id">Inserisci Tag</a>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Tabella tag</h3>
+      </div>
+      <div class="col-md-6 text-md-right">
+        <a class="btn btn-primary" routerLink="/formTag/:id">Inserisci Tag</a>
+      </div>
     </div>
 
-    <div class="table-responsive-xs-sm-md-lg-xl-xxl">
-      <table class="table">
-        <thead>
-          <tr class="bg-primary">
-            <th >Id</th>
-            <th >Tag</th>
-            <th >Descizione</th>
-            <!-- <th class="text-white">Creato in data</th>
-            <th class="text-white">Modificato in data</th> -->
-            <!-- <th class="text-white">Stato</th> -->
-            <th ></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let t of tags">
-            <td>{{t.id}}</td>
-            <td>{{t.tagName}}</td>
-            <td>{{t.description}}</td>
-            <!-- <td>{{t.createdAt}}</td>
-            <td>{{t.updateAt}}</td> -->
-            <!-- <td>{{t.enable}}</td> -->
-            <td><button routerLink='/formTag/{{t.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
-            
-          </tr>
-        </tbody>
-      </table>
+    <div class="d-flex justify-content-center my-3">
+      <div class="table-responsive">
+        <table class="table table-striped">
+        
+            <tr class="bg-primary">
+              <th class="text-white">#</th>
+              <th class="text-white">Tag</th>
+              <th class="text-white">Descizione</th>
+              <th></th>
+            </tr>
+          
+          <tbody>
+            <tr *ngFor="let t of tags">
+              <td>{{t.id}}</td>
+              <td>{{t.tagName}}</td>
+              <td>{{t.description}}</td>
+              <td><button routerLink='/formTag/{{t.id}}' class="btn btn-warning btn-sm">Modifica</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <div class="d-flex justify-content-center my-3">
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getTagImp(0)">First page</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getTagImp(page-1)">Previous</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getTagImp(0)">First page</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getTagImp(page-1)">Previous</a>
     <a class="btn btn-outline-primary px-3 bg-primary active">Pagina {{page+1}}<span
-      class="sr-only">(current)</span></a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getTagImp(page+1)">Next</a>
-    <a class="btn btn-outline-primary px-3 bg-white" (click)="getTagImp(nPagine)">Last page</a>
+        class="sr-only">(current)</span></a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getTagImp(page+1)">Next</a>
+    <a class="btn btn-outline-primary px-3 bg-white text-primary" (click)="getTagImp(nPagine)">Last page</a>
   </div>
 
 </div>

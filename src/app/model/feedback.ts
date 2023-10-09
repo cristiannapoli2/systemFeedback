@@ -1,5 +1,5 @@
 export class Feedback{
-    id!: number;
+    id: number;
     tagName!:string;
     feedbackType!: string;
     sendDate!: Date;
@@ -8,7 +8,12 @@ export class Feedback{
     enable!: Boolean;
     description!: string;
     sentAt!: string;
-    sentBy!: string;
+    sentBy: string;
     teamGroup!: string;
     
+    constructor(){
+        this.id = 0;
+        this.sentBy='';
+    
+    }
 }

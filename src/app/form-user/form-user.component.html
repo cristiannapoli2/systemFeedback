@@ -1,53 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">System Feedback Fiven</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link " href="#">Home </a>
-      <a class="nav-item nav-link" href="formTag/:id">Inserisci Tag</a>
-      <a class="nav-item nav-link active" href="formFeed/:id">Inserisci Feedback <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="tabellaUser">Tabella User</a>
-      <a class="nav-item nav-link" href="tabellaTag">Tabella Tag</a>
-      <a class="nav-item nav-link" href="tabellaFeed">Tabella Feedback</a>
-    </div>
-  </div>
-  <div class="navbar-nav ml-auto">
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="login">Login</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="#">Logout</a>
-    <a class="nav-item nav-link btn btn-outline-primary mx-1 active" href="formUser/:id">SignIn</a>
-  </div>
-</nav>
-
-
-<!-- -->
-
-
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-  <div class="container-fluid" class="inputWidth">
-
+  <div class="container p-3 bg-body-secondary rounded main centro mt-5 mb-5 rounded-5">
     <br>
     <div class="login">
       <div class="d-flex justify-content-between">
-        <h3 style="margin-left: 5%;">Registrazione User</h3>
-        <a class="btn btn-primary" routerLink="/tabellaUser" style="margin-right: 5%;">Visualizza User</a>
+        <h3 class="mb-2">Registrazione User</h3>
+        <a class="btn btn-square btn-primary" routerLink="/tabellaUser">Visualizza User</a>
       </div>
       <div class="container">
         <div class="row">
-          <div class="w-100"></div>
-          <div class="col"> <label for="username" class="form-label pt-3">Username</label>
+          <div class="col">
+            <label for="username" class="form-label pt-3">Username</label>
             <input type="text" class="form-control" name="username" id="username" placeholder="Username: "
               onclick="resetMessage()" [(ngModel)]="user.username">
           </div>
 
-          <div class="col" *ngIf="user.id!=0"> <label for="password" class="form-label pt-3">Password</label>
+          <div class="col" *ngIf="user.id!=0">
+            <label for="password" class="form-label pt-3">Password</label>
             <input type="text" class="form-control" name="password" id="password" placeholder="Password: "
               onclick="resetMessage()" [(ngModel)]="user.password" disabled>
-
           </div>
-          <div class="col" *ngIf="user.id==0"> <label for="password" class="form-label pt-3">Password</label>
+
+          <div class="col" *ngIf="user.id===0">
+            <label for="password" class="form-label pt-3">Password</label>
             <input type="text" class="form-control" name="password" id="password" placeholder="Password: "
               onclick="resetMessage()" [(ngModel)]="user.password">
 
@@ -59,7 +33,7 @@
     <div class="login">
       <div class="container">
         <div class="row">
-          <div class="w-100"></div>
+
           <div class="col"> <label for="email" class="form-label pt-3">Email</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="Email: "
               onclick="resetMessage()" [(ngModel)]="user.email">
@@ -74,7 +48,7 @@
     <div class="login">
       <div class="container">
         <div class="row">
-          <div class="w-100"></div>
+
           <div class="col"> <label for="surname" class="form-label pt-3">Surname</label>
             <input type="text" class="form-control" name="surname" id="surname" placeholder="Surname: "
               onclick="resetMessage()" [(ngModel)]="user.surname">
@@ -90,7 +64,7 @@
     <div class="login">
       <div class="container">
         <div class="row">
-          <div class="w-100"></div>
+
           <div class="col"> <label for="birthPlace" class="form-label pt-3">Birthplace</label>
             <input type="text" class="form-control" name="birthPlace" id="birthPlace" placeholder="Birthplace: "
               onclick="resetMessage()" [(ngModel)]="user.birthPlace">
@@ -104,23 +78,18 @@
     </div>
     <br>
 
-    <div *ngIf="user.id!=0">
-
-      <div style="margin-left: 13.8%;">
-
-        <label for="enableTrue">Enable</label>
-        <input style="margin-left: 2%;" type="radio" id="enableTrue" name="enable" value="true"
-          [(ngModel)]="user.enable">
-        <label style="margin-left: 4%;" for="enableFalse">Disable</label>
-        <input style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false"
-          [(ngModel)]="user.enable">
-      </div>
-      <br><br>
-      <button type="submit" class="btn btn-primary" style="margin-left: 47%;">Modifica</button>
+    <div *ngIf="user.id!=0" class="ml-4">
+      <label for="enableTrue">Enable</label>
+      <input type="radio" id="enableTrue" name="enable" value="true" [(ngModel)]="user.enable">
+      <label class="ml-2" for="enableFalse">Disable</label>
+      <input style="margin-left: 2%;" type="radio" id="enableFalse" name="enable" value="false"
+        [(ngModel)]="user.enable">
+        <button type="submit" class="btn btn-square btn-primary ml-4">Modifica</button>
     </div>
     <br>
+    
     <div *ngIf="user.id==0">
-      <button type="submit" class="btn btn-primary" style="margin-left: 47%;">Registrati</button>
+      <button type="submit" class="btn btn-square btn-primary ml-4">Registrati</button>
     </div>
-  </div>
+    </div>
 </form>

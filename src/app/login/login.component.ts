@@ -11,8 +11,8 @@ import { TokenJWT } from "../model/TokenJWT";
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
-  token!: TokenJWT;
   message!: string;
+  currentAccount!: string;
 
   ngOnInit(): void {}
 
@@ -20,12 +20,20 @@ export class LoginComponent implements OnInit {
 
   subscription(user: User): void {
     this.auth.login(user).subscribe((token: TokenJWT) => {
-      this.token = token;
       this.auth.token = token;
       this.auth.isUserLoggedIn();
-      alert("Username: "+this.token.username+"\n"+"Role: "+this.token.role+"\n"+"Date: "+this.token.expDate);
+      // alert(
+      //   "Username: " +
+      //     this.auth.token.username +
+      //     "\n" +
+      //     "Role: " +
+      //     this.auth.token.role +
+      //     "\n" +
+      //     "Date: " +
+      //     this.auth.token.expDate
+      // );
       // alert(this.token.role);
-      this.router.navigate([""]);
+      this.router.navigate(["tabellaFeed"]);
     });
   }
 
@@ -34,5 +42,6 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.subscription(this.user);
+    this.auth.isUserLoggedIn();
   }
 }

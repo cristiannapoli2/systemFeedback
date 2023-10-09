@@ -11,6 +11,7 @@ import { TabFeedbackComponent } from "./tab-feedback/tab-feedback.component";
 import { FormUserComponent } from "./form-user/form-user.component";
 import { TabUserComponent } from "./tab-user/tab-user.component";
 import { LoginComponent } from './login/login.component';
+import { loginService } from "./servizi/login-service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { LoginComponent } from './login/login.component';
     
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [loginService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
